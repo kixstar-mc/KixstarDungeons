@@ -18,5 +18,7 @@ public class Loot {
     public static List<ItemStack> generateLoot(LootConfiguration configuration) {
         return null;
     }
-
+        //uses the probability of the item in the configfuration list to determine if it'll appear in the dungeon
+        //splits the item lists into acceptable stack sizes
+        //lootconfigs are for one item type each
 }
