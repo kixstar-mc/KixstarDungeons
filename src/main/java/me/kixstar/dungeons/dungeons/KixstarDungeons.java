@@ -9,7 +9,12 @@ public class KixstarDungeons extends JavaPlugin {
 
 
     public void onEnable() {
+        this.setupConfig();
+    }
 
+    protected void setupConfig() {
+        this.getConfig().options().copyDefaults();
+        this.saveConfig();
     }
 
     public void onDisable() {
