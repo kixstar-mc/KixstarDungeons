@@ -1,4 +1,4 @@
-package me.kixstar.dungeons;
+package me.kixstar.dungeons.dungeons;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
