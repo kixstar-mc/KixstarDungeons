@@ -3,3 +3,7 @@ main: me.kixstar.dungeons.dungeons.KixstarDungeons
 version: 0.1.0-SNAPSHOT
 authors: [cf2017, CodingSeaOtter]
 depend: [Multiverse-Core, WorldEdit]
+commands:
+  kdeval:
+    description: 'evaluate an expression'
+    permission: 'kix.dungeons.eval'

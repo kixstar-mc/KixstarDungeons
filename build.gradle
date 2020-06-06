@@ -42,6 +42,7 @@ dependencies {
     compile 'com.destroystokyo.paper:paper-api:1.15.2-R0.1-SNAPSHOT'
     compile 'com.onarandombox.multiversecore:Multiverse-Core:4.1.1-SNAPSHOT'
     compile 'com.intellectualsites.fawe:FAWE-Bukkit:1.0.0'
+    compile 'org.apache.commons:commons-jexl3:3.1'
 }
 
 apply plugin: "com.github.johnrengelman.shadow"

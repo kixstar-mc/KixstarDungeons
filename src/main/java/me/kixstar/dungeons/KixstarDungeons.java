@@ -1,6 +1,7 @@
 package me.kixstar.dungeons;
 
 import com.onarandombox.MultiverseCore.MultiverseCore;
+import me.kixstar.dungeons.commands.Eval;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +21,7 @@ public class KixstarDungeons extends JavaPlugin {
         }
 
         this.setupConfig();
+        this.getCommand("kdeval").setExecutor(new Eval());
     }
 
     public void onDisable() {
