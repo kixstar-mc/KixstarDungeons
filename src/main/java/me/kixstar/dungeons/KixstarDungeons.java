@@ -9,11 +9,11 @@ import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 public class KixstarDungeons extends JavaPlugin {
     private static final Plugin instance = Bukkit.getServer().getPluginManager().getPlugin("KixstarDungeons");
     private MultiverseCore multiverse_core;
+    private WorldEditPlugin worldeditplugin;
     private WorkingMode working_mode;
 
     public void onEnable() {
-        if (!this.setupMultiverse()) {
-            this.getLogger().severe("Multiverse-Core is missing and unfortunately, not optional.");
+        if (!this.setupDependencies()) {
             this.getServer().getPluginManager().disablePlugin(this);
 
             return;
@@ -44,6 +44,10 @@ public class KixstarDungeons extends JavaPlugin {
         this.setWorkingMode(WorkingMode.valueOf(working_mode_str.toUpperCase()));
     }
 
+    private boolean setupDependencies() {
+        return this.setupMultiverse() && this.setupWorldEdit();
+    }
+
     /**
      * Verify multiverse is present and fetch it's JavaPlugin instance for later use.
      * <p>
@@ -55,10 +59,29 @@ public class KixstarDungeons extends JavaPlugin {
         Plugin multiverse_plugin = Bukkit.getPluginManager().getPlugin("Multiverse-Core");
 
         if (null == multiverse_plugin) {
+            this.getLogger().severe("Multiverse-Core is missing and unfortunately, not optional.");
             return false;
         }
 
-        this.setMultiveseCore((MultiverseCore) multiverse_plugin);
+        this.setMultiverseCore((MultiverseCore) multiverse_plugin);
+
+        return true;
+    }
+
+    /**
+     * Verify WorldEdit is present and fetch it's JavaPlugin instance for later use.
+     *
+     * @return true if setup succeeded, false if it didn't.
+     */
+    private boolean setupWorldEdit() {
+        Plugin worldedit_plugin = Bukkit.getPluginManager().getPlugin("WorldEdit");
+
+        if (null == worldedit_plugin) {
+            this.getLogger().severe("WorldEdit is missing and unfortunately, not optional.");
+            return false;
+        }
+
+        this.setWorldEditPlugin((WorldEditPlugin) worldedit_plugin);
 
         return true;
     }
@@ -76,8 +99,16 @@ public class KixstarDungeons extends JavaPlugin {
         return this.multiverse_core;
     }
 
-    private void setMultiveseCore(MultiverseCore multiverse_core) {
+    private void setMultiverseCore(MultiverseCore multiverse_core) {
         this.multiverse_core = multiverse_core;
+    }
+
+    public WorldEditPlugin getWorldEdit() {
+        return this.worldeditplugin;
+    }
+
+    private void setWorldEditPlugin(WorldEditPlugin worldeditplugin) {
+        this.worldeditplugin = worldeditplugin;
     }
 
     public WorkingMode getWorkingMode() {
