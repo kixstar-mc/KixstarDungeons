@@ -11,6 +11,9 @@ public class KixstarDungeons extends JavaPlugin {
 
     public void onEnable() {
         if(!this.setupMultiverse()) {
+            this.getLogger().severe("Multiverse-Core is missing and unfortunately, not optional.");
+            this.getServer().getPluginManager().disablePlugin(this);
+
             return;
         }
 
@@ -26,15 +29,22 @@ public class KixstarDungeons extends JavaPlugin {
         this.saveConfig();
     }
 
+    /**
+     *
+     * Verify multiverse is present and fetch it's JavaPlugin instance for later use.
+     *
+     * **
+     *
+     * @return true if setup succeeded, false if it didn't.
+     */
     private boolean setupMultiverse() {
         Plugin multiverse_plugin = Bukkit.getPluginManager().getPlugin("Multiverse-Core");
 
         if (null == multiverse_plugin) {
-            this.getLogger().severe("Multiverse-Core is missing and unfortunately, not optional.");
-            this.getServer().getPluginManager().disablePlugin(this);
-
             return false;
         }
+
+        this.setMultiveseCore((MultiverseCore) multiverse_plugin);
 
         return true;
     }
