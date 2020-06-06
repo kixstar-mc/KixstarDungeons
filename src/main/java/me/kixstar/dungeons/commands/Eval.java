@@ -2,16 +2,12 @@ package me.kixstar.dungeons.commands;
 
 import me.kixstar.dungeons.KixstarDungeons;
 import me.kixstar.dungeons.dungeons.ChunkUtils;
-import me.kixstar.dungeons.portals.KixstarPortal;
 import org.apache.commons.jexl3.*;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 public class Eval implements CommandExecutor {
 
