@@ -4,6 +4,7 @@ import com.onarandombox.MultiverseCore.MultiverseCore;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 
 public class KixstarDungeons extends JavaPlugin {
     private static final Plugin instance = Bukkit.getServer().getPluginManager().getPlugin("KixstarDungeons");

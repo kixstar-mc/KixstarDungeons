@@ -14,7 +14,7 @@ plugins {
 }
 
 group 'me.kixstar.dungeons'
-version '1.0-SNAPSHOT'
+version '0.1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -30,6 +30,10 @@ repositories {
         name 'paper'
         url 'https://papermc.io/repo/repository/maven-public/'
     }
+    maven {
+        name 'worldedit'
+        url 'https://mvn.intellectualsites.com/content/repositories/releases/'
+    }
 }
 
 dependencies {
@@ -37,6 +41,7 @@ dependencies {
     compile 'io.papermc:paperlib:1.0.3'
     compile 'com.destroystokyo.paper:paper-api:1.15.2-R0.1-SNAPSHOT'
     compile 'com.onarandombox.multiversecore:Multiverse-Core:4.1.1-SNAPSHOT'
+    compile 'com.intellectualsites.fawe:FAWE-Bukkit:1.0.0'
 }
 
 apply plugin: "com.github.johnrengelman.shadow"
