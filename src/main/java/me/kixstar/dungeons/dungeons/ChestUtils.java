@@ -12,7 +12,6 @@ import java.util.Random;
 public class ChestUtils {
 
     private static final Random random = new Random();
-    private static List<ItemStack> itemStacks;
     /**
      * distributeItems distributes a list of items into different chests, randomly
      * @param chests
@@ -20,9 +19,13 @@ public class ChestUtils {
      */
     static void distributeItems(List<Chest> chests, List<ItemStack> items) {
         if (chests != null && items != null && !(items.isEmpty())) {
-            itemStacks = items;
             for (Chest chest : chests) {
-                distributeItems(chest.getInventory(), items);
+                List<ItemStack> itemStacks = null;
+                for (int i = 0; i < random.nextInt(items.size()); i++) {
+                    itemStacks.add(items.get(i));
+                    items.remove(i);
+                }
+                distributeItems(chest.getInventory(), itemStacks);
             }
         } else {
             return;
@@ -36,20 +39,14 @@ public class ChestUtils {
      */
     static void distributeItems(Inventory inventory, List<ItemStack> items) {
         if (inventory != null && items != null && !(items.isEmpty())) {
-            for (int i = 1; i < random.nextInt(7); i++) {
-                int randomInt = random.nextInt(items.size());
+            for (ItemStack item : items) {
                 int ramdomSlot = random.nextInt(27);
                 if (inventory.getItem(ramdomSlot) != null) {
-                    inventory.setItem(ramdomSlot, items.get(randomInt));
-                    items.remove(randomInt);
-                    itemStacks.remove(randomInt);
-                } else {
-                    i = i--;
+                    inventory.setItem(ramdomSlot, item);
                 }
             }
         } else {
             return;
         }
-
     }
 }
