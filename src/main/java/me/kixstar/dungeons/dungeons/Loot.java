@@ -25,9 +25,9 @@ public class Loot {
             int maxStackSize = configuration.getMaxStackSize();
 
             while (itemAmount > 0) {
-                itemsForStack = Math.min(itemAmount, maxStackSize);
+                itemsForStack = itemAmount - maxStackSize >= 0 ? maxStackSize : itemAmount;
                 finalItemStackList.add(new ItemStack(configuration.getItemStack().getType(), itemsForStack));
-				itemAmount -= itemsForStack;
+				itemAmount -= maxStackSize;
             }
         }
         return finalItemStackList;
