@@ -19,8 +19,11 @@ public class ChestUtils {
      * @param items
      */
     static void distributeItems(List<Chest> chests, List<ItemStack> items) {
-        if (chests == null || items == null || items.isEmpty()) {
+        if (items.isEmpty()) {
             return;
+        }
+        if (chests == null || items == null) {
+            throw new IllegalArgumentException();
         }
         for (Chest chest : chests) {
             List<ItemStack> itemStacks = new ArrayList<>();
@@ -39,8 +42,11 @@ public class ChestUtils {
      * @param items
      */
     static void distributeItems(Inventory inventory, List<ItemStack> items) {
-        if (inventory == null || items == null || items.isEmpty()) {
+        if (items.isEmpty()) {
             return;
+        }
+        if (inventory == null || items == null) {
+            throw new IllegalArgumentException();
         }
         for (ItemStack item : items) {
             int ramdomSlot = random.nextInt(27);
