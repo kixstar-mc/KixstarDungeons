@@ -25,22 +25,15 @@ public class Loot {
             int maxStackSize = configuration.getMaxStackSize();
 
             while (itemAmount > 0) {
-                if (itemAmount - maxStackSize >= 0)
-                {
-                    itemsForStack = maxStackSize;
-                } else {
-                    itemsForStack = itemAmount;
-                }
+                itemsForStack = itemAmount - maxStackSize >= 0 ? maxStackSize : itemAmount;
                 finalItemStackList.add(new ItemStack(configuration.getItemStack().getType(), itemsForStack));
 				itemAmount -= maxStackSize;
             }
         }
-
         return finalItemStackList;
 
         //uses the probability of the item in the configuration list to determine if it'll appear in the dungeon
         //splits the item lists into acceptable stack sizes
-        //lootconfigs are for one item type each
     }
 
 
