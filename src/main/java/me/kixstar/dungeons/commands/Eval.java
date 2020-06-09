@@ -1,7 +1,7 @@
 package me.kixstar.dungeons.commands;
 
 import me.kixstar.dungeons.KixstarDungeons;
-import me.kixstar.dungeons.dungeons.ChunkUtils;
+import me.kixstar.dungeons.utilities.ChunkUtils;
 import org.apache.commons.jexl3.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

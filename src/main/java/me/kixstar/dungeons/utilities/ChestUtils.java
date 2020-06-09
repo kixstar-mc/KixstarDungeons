@@ -1,4 +1,4 @@
-package me.kixstar.dungeons.dungeons;
+package me.kixstar.dungeons.utilities;
 
 import org.bukkit.block.Chest;
 import org.bukkit.inventory.Inventory;

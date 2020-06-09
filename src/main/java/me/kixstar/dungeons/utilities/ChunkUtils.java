@@ -1,4 +1,4 @@
-package me.kixstar.dungeons.dungeons;
+package me.kixstar.dungeons.utilities;
 
 import io.papermc.lib.PaperLib;
 import org.bukkit.Chunk;
