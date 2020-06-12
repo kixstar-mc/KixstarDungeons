@@ -1,19 +1,22 @@
 package me.kixstar.dungeons;
 
 import com.onarandombox.MultiverseCore.MultiverseCore;
-import me.kixstar.dungeons.commands.Eval;
+import me.kixstar.dungeons.utilities.Locales;
+import me.kixstar.dungeons.utilities.WorkingMode;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 
 public class KixstarDungeons extends JavaPlugin {
-    private static final Plugin instance = Bukkit.getServer().getPluginManager().getPlugin("KixstarDungeons");
+    private static Plugin instance;
     private MultiverseCore multiverse_core;
     private WorldEditPlugin worldeditplugin;
     private WorkingMode working_mode;
+    private final Locales locales = new Locales();
 
     public void onEnable() {
+        instance = this;
         if (!this.setupDependencies()) {
             this.getServer().getPluginManager().disablePlugin(this);
 
@@ -21,7 +24,16 @@ public class KixstarDungeons extends JavaPlugin {
         }
 
         this.setupConfig();
-        this.getCommand("kdeval").setExecutor(new Eval());
+        try {
+            this.getLocales().initialize();
+            this.getLocales().selectLanguage(this.getConfig().getString("language", "english"));
+        } catch (Exception e) {
+            //Just kill the flow here.
+            e.printStackTrace();
+            this.getServer().getPluginManager().disablePlugin(this);
+
+            return;
+        }
     }
 
     public void onDisable() {
@@ -119,5 +131,9 @@ public class KixstarDungeons extends JavaPlugin {
 
     private void setWorkingMode(WorkingMode working_mode) {
         this.working_mode = working_mode;
+    }
+
+    public Locales getLocales() {
+        return this.locales;
     }
 }

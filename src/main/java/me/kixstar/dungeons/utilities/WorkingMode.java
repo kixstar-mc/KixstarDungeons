@@ -1,4 +1,4 @@
-package me.kixstar.dungeons;
+package me.kixstar.dungeons.utilities;
 
 public enum WorkingMode {
     DUNGEON_MANAGER,

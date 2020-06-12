@@ -1,5 +1,5 @@
 name: KixstarDungeons
-main: me.kixstar.dungeons.dungeons.KixstarDungeons
+main: me.kixstar.dungeons.KixstarDungeons
 version: 0.1.0-SNAPSHOT
 authors: [cf2017, CodingSeaOtter]
 depend: [Multiverse-Core, WorldEdit]
